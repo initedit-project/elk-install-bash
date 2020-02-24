@@ -137,7 +137,7 @@ function filebeat_conf() {
     sed -i '/output.logstash/c\output.logstash:' /etc/filebeat/filebeat.yml
     sed -i '/localhost:5044/c\  hosts: ["localhost:5044"]' /etc/filebeat/filebeat.yml
     
-    mv /etc/filebeat/modules.d/system.yml.disabled /etc/filebeat/modules.d/system.yml
+    #mv /etc/filebeat/modules.d/system.yml.disabled /etc/filebeat/modules.d/system.yml
 
     systemctl enable filebeat
     systemctl start filebeat
