@@ -15,5 +15,3 @@
 ``bash filebeat-agent.sh``
 
 It will ask for logstash server IP and Port[eg. <b>192.168.0.1:5044</b> ]
-
-<b>Note :</b> This script enables system module filebeat.
