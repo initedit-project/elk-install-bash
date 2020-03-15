@@ -3,9 +3,9 @@ function filebeat_agent() {
     rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
     
     #create elasticsearch repo
-echo '[elasticsearch-6.x]
-name=Elasticsearch repository for 6.x packages
-baseurl=https://artifacts.elastic.co/packages/6.x/yum
+echo '[elasticsearch-7.x]
+name=Elasticsearch repository for 7.x packages
+baseurl=https://artifacts.elastic.co/packages/7.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 enabled=1
@@ -27,7 +27,7 @@ type=rpm-md' > /etc/yum.repos.d/elasticsearch.repo
     sed -i '/output.logstash/c\output.logstash:' /etc/filebeat/filebeat.yml
     sed -i "/localhost:5044/c\  hosts: [\""$ip_port"\"]" /etc/filebeat/filebeat.yml
     
-    mv /etc/filebeat/modules.d/system.yml.disabled /etc/filebeat/modules.d/system.yml
+    #mv /etc/filebeat/modules.d/system.yml.disabled /etc/filebeat/modules.d/system.yml
 
     systemctl enable filebeat
     systemctl start filebeat
@@ -35,5 +35,3 @@ type=rpm-md' > /etc/yum.repos.d/elasticsearch.repo
 }
 
 filebeat_agent
-
-echo "Note: By default system.yml module is enabled"
